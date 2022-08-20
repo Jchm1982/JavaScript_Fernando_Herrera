@@ -48,7 +48,7 @@ console.log(entriePares);
 //Para el bloqueo de las propiedades o las modificaciones
 /*Nota:Congela las asignaciones a c/u de las propeidades, pero no a los objetos
 que estan dentro de ese objeto, el ejmplo se puede cambiar la cordenadas.lat
-*/
+*//Applications/MAMP/htdocs/login-system-master/inventorio.sql
 
 Object.freeze(personaje);
 
