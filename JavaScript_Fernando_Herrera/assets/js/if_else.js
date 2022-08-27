@@ -23,3 +23,41 @@ if(dia === 0){
 }else{
    console.log('No es Domingo, Lunes ni Martes');
 }
+
+//Sin usar if else, o switch, unicamente objetos
+
+dia = 3;
+
+//Dia de la semana
+
+const diaLetras ={
+   0:'Domingo',
+   1:'Lunes',
+   2:'Martes',
+   3:'Miercoles',
+   4:'Jueves',
+   5:'Viernes',
+   6:'Sabado'
+};
+
+console.log('El dia es:'+diaLetras[dia]);
+
+//Ejercicio anterior con funcion
+const diaLetras2 ={
+   0:()=>'Domingo - 0',
+   1:()=>'Lunes - 1',
+   2:()=>'Martes - 2',
+   3:()=>'Miercoles - 3',
+   4:()=>'Jueves - 4',
+   5:()=>'Viernes - 5',
+   6:()=>'Sabado - 6'
+};
+
+console.log('El dia es:'+diaLetras2[dia]());
+
+//Hacer con arreglos
+const diaLetras3 =[
+   'Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'
+];
+
+console.log('El dia es:'+diaLetras3[dia]);
