@@ -19,4 +19,4 @@ let j = 0;
 do{
 console.log(carros[j]);
 j++;
-}while( carros[j] ); 
+}while( carros[j] ); º
