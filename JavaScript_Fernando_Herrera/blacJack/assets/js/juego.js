@@ -40,7 +40,7 @@ const pedirCarta = () => {
 
    console.log(deck);
    console.log(carta);//La carta debe ser de la baraja
-   return '';
+   return carta;
 }
 /*
 //Medida de seguridad
@@ -49,3 +49,32 @@ for(let i =0;i<=55;i++){
 }
 */
 //pedirCarta();
+
+/*
+const valorCarta = ( carta ) => {
+   //const valor= carta[0];
+   const valor= carta.substring(0, carta.length-1);
+   let puntos = 0;
+   //console.log({valor});
+   //isNaN -> sirve para saber si es un numero
+   if( isNaN( valor )){
+      puntos = (valor === 'A') ? 11 : 10;
+      //console.log('No es un numero');
+   }else{
+      //console.log('Es un numero');
+      puntos = valor * 1;
+   }
+   console.log(puntos);
+}
+*/
+//Reduccion del ejercicio
+const valorCarta = ( carta ) => {
+   
+   const valor= carta.substring(0, carta.length-1);
+   return ( isNaN(valor) ) ? 
+         (valor==='A') ? 11 : 10
+          : valor * 1;
+}
+
+const valor = valorCarta( pedirCarta() );
+console.log ({valor});
