@@ -25,11 +25,15 @@ SINTAXIS DEL PATRON MODULO
          divCartasComputadora = document.querySelector("#computadora-cartas"),
          puntosHTML = document.querySelectorAll('small');
 
-      //FUNCION QUE INICIALIZA EL JUEGO
-      const inicializarJuego = ( numJugadores = 1 ) => {
-         deck = crearDeck();
-         
+
+   //FUNCION QUE INICIALIZA EL JUEGO
+   const inicializarJuego = ( numJugadores = 2 ) => {
+      deck = crearDeck();
+      for( let i = 0; i < numJugadores; i++){
+         puntosJugadores.push(0);
       }
+      console.log({puntosJugadores})
+   }
 
    //Esta funcion crea una nueva baraja
    const crearDeck = () => {
@@ -57,8 +61,7 @@ SINTAXIS DEL PATRON MODULO
    //crearDeck();
    
 
-   //Esta funcion permite tomar una carta
-
+   //Esta funcion permite PEDIR una carta
    const pedirCarta = () => {
       if(deck.length === 0 ){
          throw 'No hay cartas en el deck';
@@ -96,18 +99,19 @@ SINTAXIS DEL PATRON MODULO
       console.log(puntos);
    }
    */
-   //Reduccion del ejercicio
+
+   //Reduccion del ejercicio y sirve para obtener el valor de la carta
    const valorCarta = ( carta ) => {
       const valor= carta.substring(0, carta.length-1);
       return ( isNaN(valor) ) ? 
             (valor==='A') ? 11 : 10
             : valor * 1;
    }
-
+   
+   //Aqui se van a acumular los puntos del jugador
    const acumularPuntos = () =>{
 
    }
-
 
    //Este es el turno de la computadora
    const turnoComputadora = (puntosMinimos) => {
