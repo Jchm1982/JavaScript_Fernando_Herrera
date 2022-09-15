@@ -21,10 +21,13 @@ SINTAXIS DEL PATRON MODULO
          btnDetener = document.querySelector("#btnDetener"),
          btnNuevo = document.querySelector("#btnNuevo");
 
+         /*
    const divCartasJugador = document.querySelector("#jugador-cartas"),
          divCartasComputadora = document.querySelector("#computadora-cartas"),
          puntosHTML = document.querySelectorAll('small');
-
+      */
+   const divCartasJugadores = document.querySelectorAll('.divCartas'),
+         puntosHTML = document.querySelectorAll('small');
 
    //FUNCION QUE INICIALIZA EL JUEGO
    const inicializarJuego = ( numJugadores = 2 ) => {
@@ -109,21 +112,42 @@ SINTAXIS DEL PATRON MODULO
    }
    
    //Aqui se van a acumular los puntos del jugador
-   const acumularPuntos = () =>{
+   //Turno 0 = primer Jugador, y el ulimo será la computadora
+   const acumularPuntos = ( carta,turno) =>{
+         puntosJugadores[turno] = puntosJugadores[turno] + valorCarta( carta );
+         puntosHTML[turno].innerText = puntosJugadores[turno];
+         return puntosJugadores[turno];
 
+   }
+   const crearCarta = (carta,turno) =>{
+         const imgCarta = document.createElement('img');
+         imgCarta.src = `assets/cartas/${ carta }.png`;
+         imgCarta.classList.add('carta'); 
+         divCartasJugadores[turno].append( imgCarta );
+         //divCartasComputadora.append(imgCarta);
    }
 
    //Este es el turno de la computadora
    const turnoComputadora = (puntosMinimos) => {
+      let puntosComputadora = 0;
       do {
          const carta = pedirCarta();
+         puntosComputadora = acumularPuntos(carta,puntosJugadores.length - 1);
+         crearCarta(carta,puntosJugadores.length - 1);
+
+          /*
          puntosComputadora = puntosComputadora + valorCarta( carta );
          puntosHTML[1].innerText = puntosComputadora;
+         */
          //<img class="carta" src="assets/cartas/10H.png"></img>
+
+         /*
          const imgCarta = document.createElement('img');
          imgCarta.src = `assets/cartas/${ carta }.png`;
          imgCarta.classList.add('carta'); 
          divCartasComputadora.append(imgCarta);
+         */
+         
          if(puntosMinimos > 21){
             break;
          }
@@ -149,14 +173,22 @@ SINTAXIS DEL PATRON MODULO
 
    //Eventos
    btnPedir.addEventListener('click',() => {
+         
          const carta = pedirCarta();
+         const puntosJugador = acumularPuntos(carta, 0 );
+         crearCarta(carta,0);
+         /*
          puntosJugador = puntosJugador + valorCarta( carta );
          puntosHTML[0].innerText = puntosJugador;
+         */
+
          //<img class="carta" src="assets/cartas/10C.png" alt="">
+         /*
          const imgCarta = document.createElement('img');
          imgCarta.src = `assets/cartas/${ carta }.png`;
          imgCarta.classList.add('carta'); 
          divCartasJugador.append(imgCarta);
+         */
 
          //Controlar los puntos
          if( puntosJugador > 21){
@@ -187,8 +219,13 @@ SINTAXIS DEL PATRON MODULO
       inicializarJuego();
       //deck = [];
       //deck=crearDeck();
+      /*
       puntosJugador = 0;
       puntosJugador = 0;
+      */
+
+
+      /*
       puntosHTML[0].innerText = 0;
       puntosHTML[1].innerText = 0;
 
@@ -196,6 +233,9 @@ SINTAXIS DEL PATRON MODULO
       divCartasJugador.innerHTML = '';
       btnPedir.disabled = false;
       btnDetener.disabled = false;
+      */
+
+
 
    });
 
