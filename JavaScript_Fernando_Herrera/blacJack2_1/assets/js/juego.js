@@ -7,7 +7,7 @@ SINTAXIS DEL PATRON MODULO
 
 })();
 */
-(() => {
+const miModulo = (() => {
    let deck = [];
    const tipos = ['C','D','H','S'],
          especiales = ['A','J','Q','K'];
@@ -32,10 +32,31 @@ SINTAXIS DEL PATRON MODULO
    //FUNCION QUE INICIALIZA EL JUEGO
    const inicializarJuego = ( numJugadores = 2 ) => {
       deck = crearDeck();
+      
+      puntosJugadores=[];
       for( let i = 0; i < numJugadores; i++){
          puntosJugadores.push(0);
       }
-      console.log({puntosJugadores})
+      //console.log({puntosJugadores})
+      /*
+      deck = [];
+      deck=crearDeck();
+      
+      
+      puntosJugador = 0;
+      puntosJugador = 0;
+      */
+     puntosHTML.forEach(elem => elem.innerText = 0);
+     divCartasJugadores.forEach(elem => elem.innerHTML='');
+      //puntosHTML[0].innerText = 0;
+      //puntosHTML[1].innerText = 0;
+
+      //divCartasComputadora.innerHTML = '';
+      //divCartasJugador.innerHTML = '';
+      
+      btnPedir.disabled = false;
+      btnDetener.disabled = false;
+      
    }
 
    //Esta funcion crea una nueva baraja
@@ -127,6 +148,24 @@ SINTAXIS DEL PATRON MODULO
          //divCartasComputadora.append(imgCarta);
    }
 
+   const determinarGanador = () =>{
+
+      const [puntosMinimos, puntosComputadora] = puntosJugadores;
+
+      setTimeout(() => {
+         if( puntosComputadora === puntosMinimos){
+            alert('Nadie Gana :(');
+         }else if( puntosMinimos > 21){
+            alert('Computadora Gana ');
+         }else if( puntosComputadora > 21){
+            alert('Jugador Gana ');
+         }else{
+            alert('Computadora Gana');
+         }
+      },100);
+   }
+
+
    //Este es el turno de la computadora
    const turnoComputadora = (puntosMinimos) => {
       let puntosComputadora = 0;
@@ -147,25 +186,16 @@ SINTAXIS DEL PATRON MODULO
          imgCarta.classList.add('carta'); 
          divCartasComputadora.append(imgCarta);
          */
-         
+         /*
          if(puntosMinimos > 21){
             break;
          }
-         
+         */
       } while ( (puntosComputadora < puntosMinimos) && (puntosMinimos <= 21));
-         
+
+      determinarGanador();
       
-      setTimeout(() => {
-            if( puntosComputadora === puntosMinimos){
-               alert('Nadie Gana :(');
-            }else if( puntosMinimos > 21){
-               alert('Computadora Gana ');
-            }else if( puntosComputadora > 21){
-               alert('Jugador Gana ');
-            }else{
-               alert('Computadora Gana');
-            }
-         },100);
+      
    }
 
    //const valor = valorCarta( pedirCarta() );
@@ -214,29 +244,14 @@ SINTAXIS DEL PATRON MODULO
          turnoComputadora(puntosJugador);
    });
 
-   btnNuevo.addEventListener('click',() =>{
-      console.clear();
-      inicializarJuego();
-      //deck = [];
-      //deck=crearDeck();
-      /*
-      puntosJugador = 0;
-      puntosJugador = 0;
-      */
+   //btnNuevo.addEventListener('click',() =>{
+   //   //console.clear();
+   //   inicializarJuego();
+     
+   //});
 
-
-      /*
-      puntosHTML[0].innerText = 0;
-      puntosHTML[1].innerText = 0;
-
-      divCartasComputadora.innerHTML = '';
-      divCartasJugador.innerHTML = '';
-      btnPedir.disabled = false;
-      btnDetener.disabled = false;
-      */
-
-
-
-   });
+   return {
+      nuevoJuego: inicializarJuego
+   };
 
 })();
