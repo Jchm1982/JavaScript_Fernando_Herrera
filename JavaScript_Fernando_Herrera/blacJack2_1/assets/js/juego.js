@@ -8,6 +8,7 @@ SINTAXIS DEL PATRON MODULO
 })();
 */
 const miModulo = (() => {
+   'use strict';
    let deck = [];
    const tipos = ['C','D','H','S'],
          especiales = ['A','J','Q','K'];
@@ -241,7 +242,8 @@ const miModulo = (() => {
    btnDetener.addEventListener('click',() => {
          btnPedir.disabled = true;
          btnDetener.disabled = true;
-         turnoComputadora(puntosJugador);
+         //turnoComputadora(puntosJugador);
+         turnoComputadora(puntosJugadores[0]);
    });
 
    //btnNuevo.addEventListener('click',() =>{
