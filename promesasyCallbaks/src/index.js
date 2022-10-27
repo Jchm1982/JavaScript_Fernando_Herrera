@@ -1,7 +1,10 @@
-import { saludar } from './js/componentes.js';
-import './styles.css';
+import {obtenerHeroesArr} from './js/await';
 
+console.time('await'); 
 
-const nombre = 'Fernando';
+obtenerHeroesArr().then( heroes => {
+    console.table(heroes);
 
-saludar( nombre );
+    console.timeEnd('await');
+});
+
