@@ -4,7 +4,7 @@ const heroes = {
         poder:'Super Soldado'
     },
     iron:{
-        nombre:'Iron Man',
+        nombre:'Ironman',
         poder:'Millonario'
     },
     spider:{
@@ -49,10 +49,6 @@ export const buscarHeroeAsync = async( id ) => {
         }
 
 }
-
-
-
-
 
 
 const promesaLenta = new Promise( (resolve,reject) =>{
